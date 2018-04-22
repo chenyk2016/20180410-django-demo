@@ -12,6 +12,10 @@
     python manage.py shell
     # 输出Django源码位置
     python -c "import django; print(django.__path__)"
+    # 升级pip
+    python -m pip install --upgrade pip
+    # 卸载
+    pip uninstall packageName
 
 
     # 在数据库中创建一些表
@@ -22,7 +26,7 @@
     # 查看数据迁移文件
     python manage.py sqlmigrate polls 0001
     # 迁移数据文件
-     python manage.py migrate
+    python manage.py migrate
 
 
 ~~~
@@ -63,3 +67,12 @@
 ## 命令行
     输出
     print("===================hello world!")
+
+
+# 打包应用``setuptools``
+    ~~~cli
+    pip install setuptools
+    # 安装打包后的应用
+    pip install --user django-polls/dist/django-polls-0.1.tar.gz
+    ~~~
+

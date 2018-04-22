@@ -1,0 +1,128 @@
+{% load static %}
+<style type="text/css">
+	video{
+		/* height: 350px; */
+		box-sizing: border-box;
+		width: 500px;
+		background-color: #fff;
+		border: 3px solid #ccc;
+	}
+	.content{
+		display: inline-block;
+		position: relative;
+		width: auto;
+	}
+	.my-controls{
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -30px;
+		height: 30px;
+		line-height: 30px;
+		background-color: #ddd;
+	}
+	.flex{
+		display: flex;
+		height: 30px;
+	}
+	.progress{
+		flex: 1 1 auto;
+		margin: 0 10px;
+		position: relative;
+	}
+	.msg{
+		flex: 0 0 auto;
+		padding: 0 10px;
+	}
+	.bar_box{
+		box-sizing: border-box;
+		width: 100%;
+		height: 6px;
+		background-color: #e5e9ef;
+		border-radius: 3px;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -3px;
+		cursor: pointer;
+	}
+	.bar_current{
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -6px;
+		height: 12px;
+		width: 12px;
+		border: 1px solid #ccc;
+		background-color: #fff;
+		border-radius: 7px;
+	}
+</style>
+
+<div class="content" >
+
+	<video id="video1" src="{% static 'polls/video/111.mp4' %}" >
+		您的浏览器不支持 video 标签
+	</video>
+	<div class="my-controls flex">
+		<div class="progress">
+			<div class="bar_box">
+				<div class="bar_current"></div>
+				<div class="bar_buffered"></div>
+			</div>
+		</div>
+		<div class="msg"><span class="currentTime">0:00</span> / <span class="duration"></span></div>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+
+	// 事件加载顺序
+	// loadstart
+	// durationchange
+	// loadedmetadata
+	// loadeddata
+	// progress
+	// canplay
+	// canplaythrough
+
+
+	// 缓冲进度
+	// document.querySelector('#video1').buffered.end(0);
+	// document.querySelector('#video1').play();
+	// document.querySelector('#video1').pause();
+	// currentTime: 当前播放位置
+	// playbackRate: 播放速率
+	// duration: 视频长度
+	// seekable: 视频资源可下载的长度，TimeRanges 对象
+	// seeking: 是否跳转到未缓冲的位置
+	// volume: 音量
+	// pause: 暂停
+	// paly: 播放
+	var video = document.querySelector('video');
+	var timer;
+	var isPlay=false;
+
+	video.addEventListener('click', function (ev) {
+		if (isPlay) {
+			video.pause();
+			isPlay = false;
+		}else{
+			video.play();
+			isPlay = true;
+		}
+	});
+
+	video.addEventListener('canplay', function (ev) {
+		document.querySelector('.duration').innerHTML =  Math.floor(video.duration /60) + ':' +  Math.floor(video.duration % 60);
+	});
+
+	video.addEventListener('play', function (ev) {
+		timer = setInterval(function ( ) {
+			document.querySelector('.currentTime').innerHTML = Math.floor(video.currentTime /60) + ':' + Math.floor(video.currentTime % 60);
+		}, 1000)
+	});
+
+
+</script>

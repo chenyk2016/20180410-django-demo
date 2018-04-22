@@ -84,3 +84,10 @@ def vote(request, question_id):
 		selected_choice.save()
 		return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
+# 视频测试
+def video(request):
+	template = loader.get_template('polls/video.html')
+	context = {
+		1: 1,
+	}
+	return HttpResponse(template.render(context, request))

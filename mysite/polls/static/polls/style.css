@@ -2,5 +2,5 @@ li a{
 	color: green;
 }
 body{
-	background: #fff url('../img/baojing.png') no-repeat;
+	background: #fff url('./img/baojing.png') no-repeat;
 }
