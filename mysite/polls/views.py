@@ -61,12 +61,12 @@ class DetailView(generic.DetailView):
 # def results(request, question_id):
 # 	question = get_object_or_404(Question, pk=question_id)
 # 	return render(request, 'polls/results.html', {
-# 		'question': question 
+# 		'question': question
 # 	})
 class ResultsView(generic.DetailView):
 	model = Question
 	template_name = 'polls/results.html'
-		
+
 
 def vote(request, question_id):
 	question = get_object_or_404(Question, pk=question_id)
@@ -91,3 +91,8 @@ def video(request):
 		1: 1,
 	}
 	return HttpResponse(template.render(context, request))
+
+# json测试
+def jsonDemo(request, question_id=1):
+	question = Question
+	return HttpResponse(question)
