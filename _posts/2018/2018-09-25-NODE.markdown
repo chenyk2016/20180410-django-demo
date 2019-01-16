@@ -1,7 +1,7 @@
 # [编写你的第一个Django应用](https://docs.djangoproject.com/zh-hans/2.0/intro/tutorial01/#write-your-first-view)
 
 ## 安装
-~~~py
+```py
     # 安装django
     pip install django
     # 验证是否安装django
@@ -33,7 +33,7 @@
     # 迁移数据文件
     python manage.py migrate
 
-~~~
+```
 
 
 ## sqlite3
@@ -47,35 +47,29 @@
 3.运行 __python manage.py migrate__ 来应用数据库迁移。
 
 ## 创建管理员账号
-~~~python
-    # python manage.py createsuperuser
-~~~
+```python
+    $ python manage.py createsuperuser
+```
 
 
 ## 配置
 1. 配置语言
-    ~~~python
-        # zh-hans[中文] en-us[英文]
-        LANGUAGE_CODE = 'zh-hans'
-    ~~~
+```python
+    # zh-hans[中文] en-us[英文]
+    LANGUAGE_CODE = 'zh-hans'
+```
 
 ## 数据
 1. 数据时提交竞争条件
-    ~~~python
-    运用 F
-    from django.db.models import F
-    ~~~
-
-
-## python
-### 命令行
-    输出
-    print("===================hello world!")
-
+```python
+运用 F
+from django.db.models import F
+```
 
 ## 打包应用``setuptools``
-    ~~~cli
-    pip install setuptools
-    # 安装打包后的应用
-    pip install --user django-polls/dist/django-polls-0.1.tar.gz
-    ~~~
+```cli
+pip install setuptools
+# 安装打包后的应用
+pip install --user django-polls/dist/django-polls-0.1.tar.gz
+```
+##
